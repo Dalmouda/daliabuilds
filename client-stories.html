@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Real client stories from daliabuilds. See how Dalia helped Mozilla Foundation, SAP, IKEA, and startups solve AI product challenges with measurable results.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://daliabuilds.com/client-stories.html">
+<title>Client Stories — daliabuilds</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f0ed;--bg-white:#fff;--bg-soft:#f9f6f4;--navy:#14145a;--coral:#e87461;--coral-light:#f4a99e;--coral-bg:rgba(232,116,97,.08);--coral-bg2:rgba(232,116,97,.15);--text:#14145a;--text-sec:#4a4a78;--text-lt:#7a7a9a;--border:#e0dbd6;--shadow-sm:0 1px 3px rgba(20,20,90,.05);--shadow-md:0 4px 20px rgba(20,20,90,.08);--radius:14px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Open Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;font-size:15px}
+nav{position:fixed;top:0;width:100%;z-index:100;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(16px);background:rgba(245,240,237,.92);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:Roboto,sans-serif;font-size:1.35rem;font-weight:900;color:var(--navy);letter-spacing:-.03em;text-decoration:none}.nav-logo span{color:var(--coral)}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+.nav-links a{color:var(--text-sec);text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.03em;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2.5px;background:var(--coral);transition:width .3s;border-radius:2px}
+.nav-links a:hover{color:var(--navy)}.nav-links a:hover::after{width:100%}
+.nav-links a.active{color:var(--coral)}.nav-links a.active::after{width:100%}
+.section-label{font-family:Roboto,sans-serif;font-size:.75rem;color:var(--coral);text-transform:uppercase;letter-spacing:.15em;font-weight:700;margin-bottom:12px}
+.page-hero{padding:140px 60px 40px;max-width:1100px;margin:0 auto}
+.page-hero h1{font-family:Roboto,sans-serif;font-size:3rem;font-weight:900;color:var(--navy);margin-bottom:12px}
+.page-hero p{color:var(--text-sec);font-size:1.05rem;max-width:600px}
+.stories{max-width:1100px;margin:0 auto;padding:40px 60px 80px}
+/* STORY CARD - COMPACT */
+.story{background:var(--bg-white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:24px;box-shadow:var(--shadow-sm);overflow:hidden;transition:all .3s}
+.story:hover{border-color:var(--coral);box-shadow:var(--shadow-md)}
+.story-preview{padding:32px 36px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.story-left{flex:1}
+.story-top{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.story-client{font-family:Roboto,sans-serif;font-size:1.3rem;font-weight:900;color:var(--navy)}
+.story-tag{padding:4px 12px;border-radius:100px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.tag-strategy{background:var(--coral-bg2);color:var(--coral)}.tag-data{background:rgba(20,20,90,.08);color:var(--navy)}.tag-growth{background:#fef3c7;color:#d97706}.tag-product{background:#d1fae5;color:#047857}.tag-ai{background:#ede9fe;color:#7c3aed}
+.story-summary{color:var(--text-sec);font-size:.9rem;line-height:1.6;margin-bottom:12px}
+.story-results-mini{display:flex;gap:20px;flex-wrap:wrap}
+.mini-result{font-family:Roboto,sans-serif;font-size:.82rem;color:var(--navy);font-weight:600}
+.mini-result strong{color:var(--coral);font-size:1.1rem;margin-right:4px}
+.expand-arrow{width:40px;height:40px;border-radius:50%;background:var(--bg-soft);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
+.expand-arrow svg{width:16px;height:16px;stroke:var(--text-lt);transition:transform .3s}
+.story.open .expand-arrow{background:var(--coral-bg);border-color:var(--coral)}
+.story.open .expand-arrow svg{transform:rotate(180deg);stroke:var(--coral)}
+/* STORY DETAIL - HIDDEN */
+.story-detail{display:none;padding:0 36px 36px;border-top:1px solid var(--border)}
+.story.open .story-detail{display:block}
+.detail-section{margin-top:28px}
+.detail-label{font-family:Roboto,sans-serif;font-size:.75rem;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+.detail-text{color:var(--text-sec);font-size:.9rem;line-height:1.8}
+/* JOURNEY */
+.journey{position:relative;padding:24px 0 10px}
+.journey-path{position:absolute;top:50px;left:40px;right:40px;height:4px;background:var(--border);border-radius:4px;z-index:0}
+.journey-path-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--coral),var(--coral-light),#7c3aed);width:100%}
+.journey-steps{display:flex;justify-content:space-between;position:relative;z-index:1}
+.journey-step{display:flex;flex-direction:column;align-items:center;flex:1;text-align:center;padding:0 8px}
+.step-bubble{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px;box-shadow:var(--shadow-md);border:3px solid var(--bg-white)}
+.sb1{background:var(--coral);color:#fff}.sb2{background:var(--navy);color:#fff}.sb3{background:#7c3aed;color:#fff}.sb4{background:#047857;color:#fff}.sb5{background:#d97706;color:#fff}
+.step-num{font-family:Roboto,sans-serif;font-size:.6rem;font-weight:700;color:var(--text-lt);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.step-title{font-family:Roboto,sans-serif;font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:4px;line-height:1.3}
+.step-desc{font-size:.72rem;color:var(--text-lt);line-height:1.4}
+/* FULL RESULTS */
+.results-full{margin-top:28px;padding:24px;background:linear-gradient(135deg,var(--coral-bg),rgba(124,58,237,.06));border-radius:var(--radius);border:1px solid rgba(232,116,97,.15)}
+.result-grid{display:flex;gap:32px;flex-wrap:wrap}
+.result-item{text-align:center;flex:1;min-width:120px}
+.result-num{font-family:Roboto,sans-serif;font-size:1.8rem;font-weight:900;color:var(--coral);line-height:1.2}
+.result-label{font-size:.78rem;color:var(--text-sec);margin-top:4px}
+.btn-coral{display:inline-flex;align-items:center;gap:10px;padding:15px 34px;background:var(--coral);color:#fff;font-family:Roboto,sans-serif;font-weight:700;font-size:.9rem;border-radius:100px;text-decoration:none;transition:all .3s;box-shadow:0 3px 12px rgba(232,116,97,.3)}
+.btn-coral:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(232,116,97,.4);background:#d4644f}
+.stories-cta{text-align:center;padding:20px 0 60px}
+footer{text-align:center;padding:28px;background:var(--navy);font-size:.78rem;color:rgba(255,255,255,.35)}
+@media(max-width:900px){.page-hero{padding:120px 24px 30px}.stories{padding:20px 24px 60px}.story-preview{padding:24px;flex-direction:column;align-items:flex-start}.story-detail{padding:0 24px 24px}.journey-steps{flex-wrap:wrap;gap:16px}.journey-path{display:none}.step-bubble{width:48px;height:48px;font-size:1.1rem}nav{padding:14px 20px}.nav-links{gap:14px}.page-hero h1{font-size:2.2rem}.expand-arrow{position:absolute;top:24px;right:24px}.story-preview{position:relative;padding-right:64px}}
+@media(max-width:600px){.nav-links{display:none}.page-hero h1{font-size:1.8rem}.result-grid{flex-direction:column;gap:12px;text-align:left}.result-item{text-align:left}}
+</style>
+</head>
+<body>
+<nav><a href="index.html" class="nav-logo">dalia<span>builds</span></a>
+<ul class="nav-links"><li><a href="index.html#services">Services</a></li><li><a href="client-stories.html" class="active">Client Stories</a></li><li><a href="index.html#testimonials">Testimonials</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="index.html#contact">Contact</a></li></ul></nav>
+<div class="page-hero"><div class="section-label">Real Results</div><h1>Client Stories</h1><p>Every engagement is different. Here's how I've helped companies and teams solve real problems with AI and product strategy.</p></div>
+<div class="stories">
+
+<!-- STORY 1: IKEA -->
+<div class="story" onclick="toggleStory(this)">
+<div class="story-preview">
+<div class="story-left">
+<div class="story-top"><div class="story-client">Global Furniture Retailer</div><span class="story-tag tag-strategy">Product Strategy</span></div>
+<div class="story-summary">They had data but no product vision. I designed a new product from research to launch — resulting in a 2% market share increase and 20% engagement boost in 3 quarters.</div>
+<div class="story-results-mini"><span class="mini-result"><strong>+2%</strong>market share</span><span class="mini-result"><strong>+20%</strong>engagement</span><span class="mini-result"><strong>3 quarters</strong>to impact</span></div>
+</div>
+<div class="expand-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+</div>
+<div class="story-detail">
+<div class="detail-section"><div class="detail-label">The Challenge</div><div class="detail-text">One of the world's largest furniture retailers was losing competitive ground and needed a new product to recapture market share. They had years of consumer and financial data but no one had translated it into a clear product opportunity. Internal teams were siloed, and there was no unified product vision or go-to-market strategy.</div></div>
+<div class="detail-section"><div class="detail-label">How I Solved It</div><div class="detail-text">I started by analyzing their consumer and financial data to find the gap competitors were missing. From there, I worked with cross-functional teams to define a product vision, prioritize features using OKRs, and build a roadmap everyone could rally behind. I coordinated design, engineering, and marketing through iterative sprints, conducted user interviews to validate assumptions early, and developed the go-to-market plan. I also built a customer insight reporting system so the team could keep learning after launch.</div></div>
+<div class="detail-section"><div class="detail-label">The Journey</div>
+<div class="journey"><div class="journey-path"><div class="journey-path-fill"></div></div>
+<div class="journey-steps">
+<div class="journey-step"><div class="step-bubble sb1">&#128269;</div><div class="step-num">Step 1</div><div class="step-title">Research</div><div class="step-desc">Consumer data analysis, user interviews, competitive landscape</div></div>
+<div class="journey-step"><div class="step-bubble sb2">&#128204;</div><div class="step-num">Step 2</div><div class="step-title">Design</div><div class="step-desc">Product vision, feature prioritization, OKR framework</div></div>
+<div class="journey-step"><div class="step-bubble sb3">&#9881;</div><div class="step-num">Step 3</div><div class="step-title">Build</div><div class="step-desc">Cross-functional sprints, UX design with Figma, API integration</div></div>
+<div class="journey-step"><div class="step-bubble sb4">&#128200;</div><div class="step-num">Step 4</div><div class="step-title">Scale</div><div class="step-desc">Go-to-market execution, KPI tracking, optimization</div></div>
+</div></div></div>
+<div class="detail-section results-full"><div class="detail-label">The Results</div><div class="result-grid">
+<div class="result-item"><div class="result-num">+2%</div><div class="result-label">Market share increase</div></div>
+<div class="result-item"><div class="result-num">+20%</div><div class="result-label">Customer engagement over 3 quarters</div></div>
+<div class="result-item"><div class="result-num">Insight system</div><div class="result-label">Customer reporting still in use</div></div>
+</div></div>
+</div></div>
+
+<!-- STORY 2: MOZILLA -->
+<div class="story" onclick="toggleStory(this)">
+<div class="story-preview">
+<div class="story-left">
+<div class="story-top"><div class="story-client">Mozilla Foundation — AI360</div><span class="story-tag tag-ai">AI Strategy</span></div>
+<div class="story-summary">Mozilla's AI initiatives were scattered across multiple stakeholders with no unified direction. I built the AI Collective Roadmap and coordination systems that aligned the entire organization.</div>
+<div class="story-results-mini"><span class="mini-result"><strong>Roadmap</strong>shipped org-wide</span><span class="mini-result"><strong>Multi-sector</strong>partnerships</span></div>
+</div>
+<div class="expand-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+</div>
+<div class="story-detail">
+<div class="detail-section"><div class="detail-label">The Challenge</div><div class="detail-text">Mozilla Foundation was running multiple AI-focused initiatives across industry, academia, and government partners — but there was no single source of truth. Projects overlapped, priorities conflicted, and there was no way to measure impact across the AI360 portfolio. The team needed someone to bring order, build systems, and create a roadmap that all stakeholders could follow.</div></div>
+<div class="detail-section"><div class="detail-label">How I Solved It</div><div class="detail-text">I began with a full AI inventory — mapping every initiative, tool, and database across the organization. From there, I created efficient data flows so teams could actually collaborate without duplication. I designed and shipped the AI Collective Roadmap with cross-portfolio milestones and clear ownership. I organized public events and built partnerships with external stakeholders from industry, academia, and government. I also oversaw budget expenditures across projects and developed systems to track and evaluate program impact.</div></div>
+<div class="detail-section"><div class="detail-label">The Journey</div>
+<div class="journey"><div class="journey-path"><div class="journey-path-fill"></div></div>
+<div class="journey-steps">
+<div class="journey-step"><div class="step-bubble sb1">&#128203;</div><div class="step-num">Step 1</div><div class="step-title">Audit</div><div class="step-desc">AI inventory, stakeholder mapping, gap analysis</div></div>
+<div class="journey-step"><div class="step-bubble sb2">&#128506;</div><div class="step-num">Step 2</div><div class="step-title">Roadmap</div><div class="step-desc">AI Collective Roadmap with milestones & ownership</div></div>
+<div class="journey-step"><div class="step-bubble sb3">&#129309;</div><div class="step-num">Step 3</div><div class="step-title">Partner</div><div class="step-desc">Events, community building, cross-sector partnerships</div></div>
+<div class="journey-step"><div class="step-bubble sb4">&#127919;</div><div class="step-num">Step 4</div><div class="step-title">Measure</div><div class="step-desc">Impact tracking systems, budget alignment</div></div>
+</div></div></div>
+<div class="detail-section results-full"><div class="detail-label">The Results</div><div class="result-grid">
+<div class="result-item"><div class="result-num">Roadmap shipped</div><div class="result-label">Adopted across the organization</div></div>
+<div class="result-item"><div class="result-num">Multi-sector</div><div class="result-label">Industry, academia & gov partnerships built</div></div>
+<div class="result-item"><div class="result-num">New data flows</div><div class="result-label">Eliminated duplication across teams</div></div>
+</div></div>
+</div></div>
+
+<!-- STORY 3: SAP -->
+<div class="story" onclick="toggleStory(this)">
+<div class="story-preview">
+<div class="story-left">
+<div class="story-top"><div class="story-client">SAP Co-Innovation Lab</div><span class="story-tag tag-data">Data & Product</span></div>
+<div class="story-summary">10 years of project data sitting unused. I turned it into visual insights, found a product gap in the market, and got a new product proposal approved by the executive board.</div>
+<div class="story-results-mini"><span class="mini-result"><strong>10 years</strong>data analyzed</span><span class="mini-result"><strong>Board approved</strong>new product</span><span class="mini-result"><strong>Portfolio</strong>launched</span></div>
+</div>
+<div class="expand-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+</div>
+<div class="story-detail">
+<div class="detail-section"><div class="detail-label">The Challenge</div><div class="detail-text">SAP's Co-Innovation Lab in Palo Alto had accumulated a decade of project data across pipelines, partnerships, and innovation experiments — but nobody had ever made sense of it all. The data sat in different systems, in different formats, telling no story. Leadership knew there were insights buried in there but had no capacity to extract them. They also needed to justify the lab's impact and find the next big opportunity.</div></div>
+<div class="detail-section"><div class="detail-label">How I Solved It</div><div class="detail-text">I extracted project data from SAP pipelines and integrated it with project fishtank data, cleaning and structuring a decade's worth of information. I then designed an infographic that visualized 10 years of co-innovation achievements — which became a key communication tool for the lab. I also created podcasts and animated videos to tell the value proposition story through effective storytelling. Meanwhile, I initiated independent market research that revealed a clear gap for a new product. I wrote the proposal and presented it to the executive board, who approved it. I then developed go-to-market plans and launched a portfolio of networking projects that are now integral to SAP Cloud Operations.</div></div>
+<div class="detail-section"><div class="detail-label">The Journey</div>
+<div class="journey"><div class="journey-path"><div class="journey-path-fill"></div></div>
+<div class="journey-steps">
+<div class="journey-step"><div class="step-bubble sb1">&#128451;</div><div class="step-num">Step 1</div><div class="step-title">Extract</div><div class="step-desc">10 years of pipeline and project data cleaned</div></div>
+<div class="journey-step"><div class="step-bubble sb2">&#128202;</div><div class="step-num">Step 2</div><div class="step-title">Visualize</div><div class="step-desc">Infographics, podcasts, animated videos</div></div>
+<div class="journey-step"><div class="step-bubble sb3">&#128161;</div><div class="step-num">Step 3</div><div class="step-title">Discover</div><div class="step-desc">Market research revealed a product gap</div></div>
+<div class="journey-step"><div class="step-bubble sb4">&#127941;</div><div class="step-num">Step 4</div><div class="step-title">Launch</div><div class="step-desc">Proposal approved, portfolio shipped</div></div>
+</div></div></div>
+<div class="detail-section results-full"><div class="detail-label">The Results</div><div class="result-grid">
+<div class="result-item"><div class="result-num">10 years</div><div class="result-label">Of data turned into actionable insights</div></div>
+<div class="result-item"><div class="result-num">Board approved</div><div class="result-label">New product proposal</div></div>
+<div class="result-item"><div class="result-num">Portfolio launched</div><div class="result-label">Now integral to SAP Cloud Ops</div></div>
+</div></div>
+</div></div>
+
+<!-- STORY 4: DOKTOR.SE -->
+<div class="story" onclick="toggleStory(this)">
+<div class="story-preview">
+<div class="story-left">
+<div class="story-top"><div class="story-client">Doktor.se — Digital Health</div><span class="story-tag tag-growth">Growth</span></div>
+<div class="story-summary">A digital health startup with limited budget needed rapid growth. I generated over 1M Kr. in revenue through data-driven marketing with 2x ROI on every campaign.</div>
+<div class="story-results-mini"><span class="mini-result"><strong>1M+ Kr.</strong>revenue</span><span class="mini-result"><strong>2x ROI</strong>campaigns</span><span class="mini-result"><strong>1,000+</strong>customers</span></div>
+</div>
+<div class="expand-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+</div>
+<div class="story-detail">
+<div class="detail-section"><div class="detail-label">The Challenge</div><div class="detail-text">Doktor.se was a digital healthcare platform in Sweden that needed to grow fast — more website traffic, more patients signing up, more revenue. But the marketing budget was tight, so every krona spent had to deliver measurable returns. Previous campaigns had been scattered with no clear strategy or performance tracking.</div></div>
+<div class="detail-section"><div class="detail-label">How I Solved It</div><div class="detail-text">I started by auditing all existing marketing channels to find where the highest ROI opportunities were hiding. Then I ran systematic A/B tests across SEO, social media, and paid channels to find what actually worked. Once I identified the winners — paid search, display advertising, and retargeting — I scaled those aggressively while cutting underperformers. I also built an email marketing and lead generation engine to acquire and retain customers over time, creating a sustainable growth loop rather than one-off campaigns.</div></div>
+<div class="detail-section"><div class="detail-label">The Journey</div>
+<div class="journey"><div class="journey-path"><div class="journey-path-fill"></div></div>
+<div class="journey-steps">
+<div class="journey-step"><div class="step-bubble sb1">&#128270;</div><div class="step-num">Step 1</div><div class="step-title">Audit</div><div class="step-desc">Channel analysis, identified high-ROI opportunities</div></div>
+<div class="journey-step"><div class="step-bubble sb5">&#9889;</div><div class="step-num">Step 2</div><div class="step-title">Test</div><div class="step-desc">A/B testing across SEO, social, paid channels</div></div>
+<div class="journey-step"><div class="step-bubble sb4">&#128640;</div><div class="step-num">Step 3</div><div class="step-title">Scale</div><div class="step-desc">Doubled down on winners, built retention engine</div></div>
+</div></div></div>
+<div class="detail-section results-full"><div class="detail-label">The Results</div><div class="result-grid">
+<div class="result-item"><div class="result-num">1M+ Kr.</div><div class="result-label">Revenue generated</div></div>
+<div class="result-item"><div class="result-num">+20%</div><div class="result-label">Website traffic increase</div></div>
+<div class="result-item"><div class="result-num">2x ROI</div><div class="result-label">On every campaign</div></div>
+<div class="result-item"><div class="result-num">1,000+</div><div class="result-label">Customers acquired & retained</div></div>
+</div></div>
+</div></div>
+
+<!-- STORY 5: BETAO -->
+<div class="story" onclick="toggleStory(this)">
+<div class="story-preview">
+<div class="story-left">
+<div class="story-top"><div class="story-client">BetaO — Product Growth</div><span class="story-tag tag-product">Product Management</span></div>
+<div class="story-summary">A startup struggling with product-market fit. I defined the product vision, aligned engineering, and delivered 20% engagement growth with 30% revenue increase.</div>
+<div class="story-results-mini"><span class="mini-result"><strong>+20%</strong>engagement</span><span class="mini-result"><strong>+30%</strong>ARR</span><span class="mini-result"><strong>+15%</strong>satisfaction</span></div>
+</div>
+<div class="expand-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+</div>
+<div class="story-detail">
+<div class="detail-section"><div class="detail-label">The Challenge</div><div class="detail-text">BetaO was a Stockholm-based startup that needed to accelerate product-market fit. Customer engagement was flat, revenue growth was stalling, and the engineering team was shipping features without clear strategic direction. There was no unified product vision, no milestone framework to measure progress, and marketing was disconnected from the product roadmap.</div></div>
+<div class="detail-section"><div class="detail-label">How I Solved It</div><div class="detail-text">I led the development of a clear product vision and strategy for the entire portfolio. I defined product requirements and worked closely with engineering to deliver high-quality products on time and within budget — which immediately improved customer satisfaction. I established concrete milestone criteria within the roadmap so the team could measure progress objectively. I also conceptualized and deployed enhanced product features specifically optimized for marketing, creating a tighter loop between what we built and how we grew. Comprehensive product documentation kept internal teams aligned on upcoming features.</div></div>
+<div class="detail-section"><div class="detail-label">The Journey</div>
+<div class="journey"><div class="journey-path"><div class="journey-path-fill"></div></div>
+<div class="journey-steps">
+<div class="journey-step"><div class="step-bubble sb2">&#127919;</div><div class="step-num">Step 1</div><div class="step-title">Align</div><div class="step-desc">Product vision, milestone criteria, team buy-in</div></div>
+<div class="journey-step"><div class="step-bubble sb3">&#128230;</div><div class="step-num">Step 2</div><div class="step-title">Ship</div><div class="step-desc">Quality engineering, feature development, documentation</div></div>
+<div class="journey-step"><div class="step-bubble sb4">&#128200;</div><div class="step-num">Step 3</div><div class="step-title">Grow</div><div class="step-desc">Marketing-optimized features, performance analysis</div></div>
+</div></div></div>
+<div class="detail-section results-full"><div class="detail-label">The Results</div><div class="result-grid">
+<div class="result-item"><div class="result-num">+20%</div><div class="result-label">Customer engagement</div></div>
+<div class="result-item"><div class="result-num">+30%</div><div class="result-label">Annual recurring revenue</div></div>
+<div class="result-item"><div class="result-num">+15%</div><div class="result-label">Customer satisfaction</div></div>
+</div></div>
+</div></div>
+
+</div>
+<div class="stories-cta"><a href="https://calendly.com/daliabuilds" target="_blank" class="btn-coral">Want results like these? Let's talk <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<footer><p>daliabuilds · 2025</p></footer>
+<script>
+function toggleStory(el){var wasOpen=el.classList.contains('open');var all=document.querySelectorAll('.story');for(var i=0;i<all.length;i++){all[i].classList.remove('open')}if(!wasOpen){el.classList.add('open');setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'})},100)}}
+</script>
+</body>
+</html>
